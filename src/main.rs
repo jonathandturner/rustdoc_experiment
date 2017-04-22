@@ -14,7 +14,7 @@ fn print_doc(host: &analysis::AnalysisHost, id: u32) {
     let mut node_id = def.parent;
     while let Some(pid) = node_id {
         if let Ok(parent_def) = host.get_def(pid) {
-            parents.push(parent_def.name.clone());
+            parents.push((parent_def.name.clone(), pid));
             node_id = parent_def.parent;
         }
         else {
@@ -22,7 +22,7 @@ fn print_doc(host: &analysis::AnalysisHost, id: u32) {
             break;
         }
     }
-    let breadcrumbs: Vec<&String> = parents.iter().rev().collect();
+    let breadcrumbs: Vec<&(String, u32)> = parents.iter().rev().collect();
     println!("breadcrumbs: {:?}", breadcrumbs);
 
     for line in def.docs.clone().lines() {
