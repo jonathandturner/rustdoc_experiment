@@ -1,0 +1,11 @@
+[package]
+name = "rustdoc_experiment"
+version = "0.1.0"
+authors = ["Jonathan Turner <jturner@mozilla.com>"]
+
+[dependencies]
+rls-span = { git = "https://github.com/nrc/rls-span" }
+rls-analysis = { git = "https://github.com/nrc/rls-analysis" }
+
+[dev-dependencies]
+derive-new = "0.3"
